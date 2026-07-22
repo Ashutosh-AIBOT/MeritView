@@ -1,0 +1,13 @@
+{
+  "name": "meritview",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter ./client dev & pnpm --filter ./server dev",
+    "build": "pnpm --filter ./packages/... build && pnpm --filter ./client build && pnpm --filter ./server build",
+    "test": "pnpm --filter ./... test",
+    "lint": "pnpm --filter ./... lint",
+    "typecheck": "pnpm --filter ./... typecheck",
+    "db:migrate": "pnpm --filter ./server db:migrate",
+    "db:seed": "pnpm --filter ./server db:seed"
+  }
+}

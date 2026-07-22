@@ -1,0 +1,19 @@
+{
+  "name": "@meritview/llm-abstraction",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@meritview/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@google/generative-ai": "0.21.x",
+    "groq-sdk": "1.3.0",
+    "typescript": "5.4.x"
+  }
+}
