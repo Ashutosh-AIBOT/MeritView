@@ -39,6 +39,45 @@
   - [x] Prisma schema validated and client generated
   - **Owner:** Backend Architect / DevOps Automator
 
+- [x] **2.** `feat(infra): add Docker Compose for local dev (PostgreSQL, Redis, mock LLM)`
+  - [x] `infra/docker-compose.yml` with postgres, redis, server, client, mock-llm services
+  - [x] Health checks for postgres and redis
+  - [x] Hot reload volume mounts for server and client
+  - [x] `infra/mock-llm.Dockerfile` and `infra/mock-llm-db.json`
+  - **Owner:** DevOps Automator
+
+- [ ] **3.** `feat(db): add Prisma schema and migrations for all MVP tables`
+  - [ ] `server/prisma/schema.prisma` with all MVP models
+  - [ ] `pnpm db:migrate` creates tables successfully
+  - [ ] `pgcrypto` extension enabled in PostgreSQL
+  - **Owner:** Database Reliability Engineer
+
+- [ ] **4.** `feat(auth): implement register, verify-email, login, logout endpoints`
+  - [ ] POST `/v1/auth/register` with email, password, display_name, accept_terms
+  - [ ] POST `/v1/auth/verify-email` with token
+  - [ ] POST `/v1/auth/login` with email, password
+  - [ ] POST `/v1/auth/logout` with valid JWT
+  - **Owner:** Backend Architect
+
+- [ ] **5.** `feat(auth): implement password reset and refresh token endpoints`
+  - [ ] POST `/v1/auth/password-reset/request` with email
+  - [ ] POST `/v1/auth/password-reset/complete` with token, new_password
+  - [ ] POST `/v1/auth/refresh` with refresh_token
+  - **Owner:** Backend Architect
+
+- [ ] **6.** `feat(auth): add auth middleware and JWT validation`
+  - [ ] `authenticate` middleware extracts and validates JWT
+  - [ ] `requireAdmin` middleware enforces admin role
+  - [ ] `requireSupport` middleware enforces support role
+  - [ ] 401/403 responses use standard error envelope
+  - **Owner:** Backend Architect
+
+- [ ] **7.** `test(auth): add unit and integration tests for auth endpoints`
+  - [ ] Unit tests for auth service functions
+  - [ ] Integration tests for all auth routes
+  - [ ] Edge cases: duplicate email, invalid password, expired token, wrong role
+  - **Owner:** Backend Architect
+
 ---
 
 ## Phase 2: Core Dispute Flow (Weeks 3-4)
@@ -153,10 +192,10 @@
 ## Project Completion Tracker
 
 **Total Tasks:** 71  
-**Completed:** 1  
+**Completed:** 2  
 **In Progress:** 0  
-**Remaining:** 70  
-**Overall Completion:** 1.4%
+**Remaining:** 69  
+**Overall Completion:** 2.8%
 
 ---
 
@@ -164,7 +203,8 @@
 
 | Task | Tests Passed | Edge Cases Covered | Security Check | Date Completed |
 |------|-------------|-------------------|----------------|----------------|
-| 1. `feat(infra): initialize monorepo with pnpm workspaces` | `pnpm install` passes across all 5 workspace projects | N/A | Dependency versions pinned; no hardcoded secrets | [today] |
+| 1. `feat(infra): initialize monorepo with pnpm workspaces` | `pnpm install` and `pnpm typecheck` pass across all workspace packages | N/A | Dependency versions pinned; no hardcoded secrets | [today] |
+| 2. `feat(infra): add Docker Compose for local dev` | `docker-compose.yml` validates; services defined with health checks | N/A | No secrets in compose files; ports bound locally only | [today] |
 
 ---
 
