@@ -1,6 +1,7 @@
 {
   "name": "meritview",
   "private": true,
+  "packageManager": "pnpm@8.15.4",
   "scripts": {
     "dev": "pnpm --filter ./client dev & pnpm --filter ./server dev",
     "build": "pnpm --filter ./packages/... build && pnpm --filter ./client build && pnpm --filter ./server build",
