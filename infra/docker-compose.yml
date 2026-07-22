@@ -27,6 +27,15 @@ services:
       timeout: 5s
       retries: 5
 
+  mock-llm:
+    build:
+      context: .
+      dockerfile: infra/mock-llm.Dockerfile
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./infra/mock-llm-db.json:/app/db.json
+
   server:
     build:
       context: .
