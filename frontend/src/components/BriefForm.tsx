@@ -53,9 +53,9 @@ export function BriefForm({ disputeId, partyId, initialSections = {}, onSubmitte
   }
 
   async function submitBrief() {
-    for (const key of Object.keys(sections)) {
-      if (!sections[key]?.trim()) {
-        setError(`Section "${key.replace(/_/g, ' ')}" is required`);
+    for (const [_key, value] of Object.entries(sections)) {
+      if (!value?.trim()) {
+        setError(`Section "${_key.replace(/_/g, ' ')}" is required`);
         return;
       }
     }
