@@ -1,0 +1,42 @@
+--- /home/creator/Desktop/IDEA/MeritView/frontend/src/app/(dashboard)/dashboard/disputes/[id]/page.tsx
++++ /home/creator/Desktop/IDEA/MeritView/frontend/src/app/(dashboard)/dashboard/disputes/[id]/page.tsx
+@@ -236,13 +236,25 @@
+       </div>
+ 
+       {dispute.state === 'DRAFT' && (
+         <div className="flex gap-3">
+-          <Link
+-            href={`/dashboard/disputes/${disputeId}/payment`}
+-            className="px-6 py-2 text-sm font-medium bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors shadow-sm"
+-          >
+-            Proceed to Payment ($49)
+-          </Link>
++          {(!dispute.parties || !dispute.parties.find((p: any) => p.userId === dispute.initiatorUserId)?.briefStatus || dispute.parties.find((p: any) => p.userId === dispute.initiatorUserId).briefStatus !== 'SUBMITTED') ? (
++            <Link
++              href={`/dashboard/disputes/${disputeId}/brief`}
++              className="px-6 py-2 text-sm font-medium bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors shadow-sm"
++            >
++              Draft Your Brief
++            </Link>
++          ) : null}
+           <Link
+             href={`/dashboard/disputes/${disputeId}/edit`}
+             className="px-4 py-2 text-sm font-medium border border-border text-foreground rounded-md hover:bg-muted/50 transition-colors"
+@@ -254,6 +266,17 @@
+             Withdraw
+           </button>
+         </div>
+       )}
++
++      {dispute.state === 'PAYMENT_PENDING' && (
++        <div className="flex gap-3 mt-4">
++          <Link
++            href={`/dashboard/disputes/${disputeId}/payment`}
++            className="px-6 py-2 text-sm font-medium bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors shadow-sm"
++          >
++            Proceed to Payment ($49)
++          </Link>
++        </div>
++      )}
+ 
+       {dispute.state === 'COMPLETED' && opinion && (
